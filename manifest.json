@@ -6,22 +6,24 @@
   
   "icons":
   {
-    "16": "images/16.png",
-    "32": "images/32.png",
-    "48": "images/48.png",
-    "128": "images/64.png"
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon64.png"
   },
 
   "browser_action": {
     "default_popup": "popup.html",
     "default_title": "在知乎中搜索",
     "default_icon": {
-      "16": "images/16.png",
-      "32": "images/32.png",
-      "48": "images/48.png",
-      "128": "images/64.png"
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon64.png"
     }
   },
+
+  
 
   "homepage_url": "https://github.com/Tokunaga-24253/zhihuSearch-on-Chrome"
   
