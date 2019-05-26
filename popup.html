@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>zhihu-Search</title>
+    <meta charset="UTF-8">
+    <title>speedSearch</title>
     <link rel="stylesheet" href="popup.css">
   </head>
   <body>
     <div class="container">
-      <form action=""></form>
       <input type="text" id="input">
-      
+
+      <select name="select" id="select">
+        <option value="zhihu">知乎</option>
+        <option value="douban">豆瓣</option>
+        <option value="bilibili">B站</option>
+        <option value="taobao">淘宝</option>
+      </select>
+
       <button id="btn"><img src="./images/search16.png" alt="searchButton"></button>
-      
     </div>
   </body>
-  
   <script src="./popup.js"></script>
 </html>

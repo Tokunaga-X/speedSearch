@@ -1,6 +1,6 @@
 body {
-    margin: 2px;
-    width: 220px;
+    margin: 0px;
+    width: 275px;
     height: 30px;
 }
 
@@ -12,6 +12,11 @@ body {
 
 input {
     height: 20px;
+}
+
+select {
+    color: rgb(70, 115, 139);
+    margin: 0 5px ; 
 }
 
 button {

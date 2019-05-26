@@ -4,6 +4,8 @@
   "version": "1.0",
   "description": "Quick way to search on zhihu while using chrome.",
   
+  "options_page": "options.html",
+  
   "icons":
   {
     "16": "images/icon16.png",
@@ -24,7 +26,6 @@
   },
 
   
-
   "homepage_url": "https://github.com/Tokunaga-24253/zhihuSearch-on-Chrome"
   
   
