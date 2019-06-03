@@ -1,5 +1,12 @@
 body {
     margin: 0;
     text-align: center;
-    
+    height: 100vh;
+}
+
+.container {
+    margin: 0 auto;
+    border: solid 5px black;
+    width: 50%;
+    height: 40%;
 }
