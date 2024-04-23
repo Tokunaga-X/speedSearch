@@ -1,4 +1,4 @@
-## speedSearch
+## Introduction
 
 一个简单的**Chrome**扩展，用来快速在一些信息网站上搜索东西。
 
@@ -10,7 +10,17 @@ This is a Chrome extension that has been designed with the aim of providing a fa
 
 目前支持谷歌、百度、知乎、豆瓣、B 站、淘宝搜索。
 
-Todo：
+## How to load it on your Chrome
+
+1. 进入 Chrome 扩展管理页面：chrome://extensions/
+2. 打开开发者模式  
+   ![image](./images/chrome-extension-developer-mode.png)
+3. 点击*加载已解压的扩展程序*按钮
+   ![image](./images/chrome-extension-load.png)
+4. 选择代码文件目录
+5. 完成，你可以点击扩展程序呼出，固定到快捷栏，或者编辑键位来快速呼出搜索栏
+
+## Todo：
 
 -   增加其他搜索选项。
 -   增加选项页面，使其能够使用户控制搜索选项
