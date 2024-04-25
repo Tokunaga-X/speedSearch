@@ -20,6 +20,10 @@ This is a Chrome extension that has been designed with the aim of providing a fa
 4. 选择代码文件目录
 5. 完成，你可以点击扩展程序呼出，固定到快捷栏，或者编辑键位来快速呼出搜索栏
 
+### Option-page usage
+
+你可以在 Option 页面里进行配置，选择你想要在扩展中可使用的搜索平台。
+
 ## Todo：
 
 -   增加其他搜索选项。
