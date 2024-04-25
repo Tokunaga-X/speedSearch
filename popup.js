@@ -1,5 +1,30 @@
 "use strict"
 
+export const OPTIONS = [
+    { value: "google", text: "谷歌" },
+    { value: "baidu", text: "百度" },
+    { value: "zhihu", text: "知乎" },
+    { value: "douban", text: "豆瓣" },
+    { value: "bilibili", text: "B站" },
+    { value: "taobao", text: "淘宝" },
+]
+
+chrome.storage.sync.get("OptionList", ({ OptionList }) => {
+    OptionList.forEach((item, index) => {
+        OPTIONS[index].checked = item.checked
+    })
+})
+
+const select = document.getElementById("select")
+
+for (let i = 0; i < OPTIONS.length; i++) {
+    if (!OPTIONS[i].checked) continue
+    const option = document.createElement("option")
+    option.value = OPTIONS[i].value
+    option.text = OPTIONS[i].text
+    select.appendChild(option)
+}
+
 var btn = document.getElementById("btn")
 //设置打开页面光标就聚焦在输入栏
 window.onload = function () {
