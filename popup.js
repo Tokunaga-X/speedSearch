@@ -9,11 +9,11 @@ export const OPTIONS = [
     { value: "taobao", text: "淘宝" },
 ]
 
-chrome.storage.sync.get("OptionList", ({ OptionList }) => {
-    OptionList.forEach((item, index) => {
-        OPTIONS[index].checked = item.checked
-    })
-})
+// chrome.storage.sync.get("OptionList", ({ OptionList }) => {
+//     OptionList.forEach((item, index) => {
+//         OPTIONS[index].checked = item.checked
+//     })
+// })
 
 const select = document.getElementById("select")
 
