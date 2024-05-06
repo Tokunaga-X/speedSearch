@@ -6,7 +6,7 @@
 
     "options_page": "options.html",
 
-    "permissions": ["commands"],
+    "permissions": ["commands", "storage"],
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {

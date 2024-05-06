@@ -1,36 +1,43 @@
 "use strict"
 
-const OPTIONS = [
-    { value: "google", text: "谷歌" },
-    { value: "baidu", text: "百度" },
-    { value: "zhihu", text: "知乎" },
-    { value: "douban", text: "豆瓣" },
-    { value: "bilibili", text: "B站" },
-    { value: "taobao", text: "淘宝" },
-]
-
-// chrome.storage.sync.get("OptionList", ({ OptionList }) => {
-//     OptionList.forEach((item, index) => {
-//         OPTIONS[index].checked = item.checked
-//     })
-// })
-
 var searchInputElement = document.getElementById("input")
 var searchButtonElement = document.getElementById("btn")
 var searchSelectElement = document.getElementById("select")
 
 //设置打开页面光标就聚焦在输入栏
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
     searchInputElement.focus()
 
-    for (let i = 0; i < OPTIONS.length; i++) {
-        // if (!OPTIONS[i].checked) continue
-        const option = document.createElement("option")
-        option.value = OPTIONS[i].value
-        option.text = OPTIONS[i].text
-        select.appendChild(option)
-    }
-}
+    // 获取选项页面中的复选框状态
+    chrome.storage.sync.get(
+        {
+            google: true,
+            baidu: true,
+            zhihu: true,
+            douban: true,
+            bilibili: true,
+            taobao: true,
+        },
+        function (items) {
+            // 动态添加选项
+            const OPTIONS = [
+                { value: "google", text: "谷歌", checked: items.google },
+                { value: "baidu", text: "百度", checked: items.baidu },
+                { value: "zhihu", text: "知乎", checked: items.zhihu },
+                { value: "douban", text: "豆瓣", checked: items.douban },
+                { value: "bilibili", text: "B站", checked: items.bilibili },
+                { value: "taobao", text: "淘宝", checked: items.taobao },
+            ]
+
+            OPTIONS.forEach(option => {
+                if (option.checked) {
+                    var newOption = new Option(option.text, option.value)
+                    searchEngine.appendChild(newOption)
+                }
+            })
+        }
+    )
+})
 
 //设置回车等于点击按钮
 searchInputElement.addEventListener("keyup", function (event) {
