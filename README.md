@@ -26,7 +26,6 @@ This is a Chrome extension that has been designed with the aim of providing a fa
 
 ## Todo：
 
--   增加其他搜索选项。
--   增加选项页面，使其能够使用户控制搜索选项
--   美化页面。
--   使用AI教我如何实现
+-   [ ] 美化 option 页面。
+-   [x] 增加其他搜索选项
+-   [x] 增加选项页面，使其能够使用户控制搜索选项
