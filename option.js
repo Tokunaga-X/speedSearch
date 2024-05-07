@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     // 获取所有复选框元素
     var googleCheckbox = document.getElementById("googleCheckbox")
     var baiduCheckbox = document.getElementById("baiduCheckbox")
@@ -7,38 +7,19 @@ document.addEventListener("DOMContentLoaded", function () {
     var bilibiliCheckbox = document.getElementById("bilibiliCheckbox")
     var taobaoCheckbox = document.getElementById("taobaoCheckbox")
 
-    // 保存用户设置
-    function saveOptions() {
-        chrome.storage.sync.set({
-            google: googleCheckbox.checked,
-            baidu: baiduCheckbox.checked,
-            zhihu: zhihuCheckbox.checked,
-            douban: doubanCheckbox.checked,
-            bilibili: bilibiliCheckbox.checked,
-            taobao: taobaoCheckbox.checked,
-        })
-    }
-
     // 加载用户设置
-    function loadOptions() {
-        chrome.storage.sync.get(
-            {
-                google: true,
-                baidu: true,
-                zhihu: true,
-                douban: true,
-                bilibili: true,
-                taobao: true,
-            },
-            function (items) {
-                googleCheckbox.checked = items.google
-                baiduCheckbox.checked = items.baidu
-                zhihuCheckbox.checked = items.zhihu
-                doubanCheckbox.checked = items.douban
-                bilibiliCheckbox.checked = items.bilibili
-                taobaoCheckbox.checked = items.taobao
-            }
-        )
+    const loadOptions = () => {
+        chrome.storage.sync
+            .get(["google", "baidu", "zhihu", "douban", "bilibili", "taobao"])
+            .then(result => {
+                console.log("result", result)
+                googleCheckbox.checked = result["google"] || false
+                baiduCheckbox.checked = result["baidu"] || false
+                zhihuCheckbox.checked = result["zhihu"] || false
+                doubanCheckbox.checked = result["douban"] || false
+                bilibiliCheckbox.checked = result["bilibili"] || false
+                taobaoCheckbox.checked = result["taobao"] || false
+            })
     }
 
     // 页面加载时加载用户设置
@@ -51,16 +32,16 @@ document.addEventListener("DOMContentLoaded", function () {
     doubanCheckbox.addEventListener("change", saveOptions)
     bilibiliCheckbox.addEventListener("change", saveOptions)
     taobaoCheckbox.addEventListener("change", saveOptions)
-})
 
-// 在安装扩展时设置默认值
-chrome.runtime.onInstalled.addListener(function () {
-    chrome.storage.sync.set({
-        google: true,
-        baidu: true,
-        zhihu: true,
-        douban: true,
-        bilibili: true,
-        taobao: true,
-    })
+    // 保存用户设置
+    function saveOptions() {
+        chrome.storage.sync.set({
+            google: googleCheckbox.checked,
+            baidu: baiduCheckbox.checked,
+            zhihu: zhihuCheckbox.checked,
+            douban: doubanCheckbox.checked,
+            bilibili: bilibiliCheckbox.checked,
+            taobao: taobaoCheckbox.checked,
+        })
+    }
 })

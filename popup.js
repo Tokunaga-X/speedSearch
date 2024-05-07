@@ -1,42 +1,47 @@
 "use strict"
 
-var searchInputElement = document.getElementById("input")
 var searchButtonElement = document.getElementById("btn")
 var searchSelectElement = document.getElementById("select")
+var searchInputElement = document.getElementById("input")
 
 //设置打开页面光标就聚焦在输入栏
 document.addEventListener("DOMContentLoaded", function () {
     searchInputElement.focus()
 
-    // 获取选项页面中的复选框状态
-    chrome.storage.sync.get(
-        {
-            google: true,
-            baidu: true,
-            zhihu: true,
-            douban: true,
-            bilibili: true,
-            taobao: true,
-        },
-        function (items) {
-            // 动态添加选项
-            const OPTIONS = [
-                { value: "google", text: "谷歌", checked: items.google },
-                { value: "baidu", text: "百度", checked: items.baidu },
-                { value: "zhihu", text: "知乎", checked: items.zhihu },
-                { value: "douban", text: "豆瓣", checked: items.douban },
-                { value: "bilibili", text: "B站", checked: items.bilibili },
-                { value: "taobao", text: "淘宝", checked: items.taobao },
-            ]
+    var keys = ["google", "baidu", "zhihu", "douban", "bilibili", "taobao"]
 
-            OPTIONS.forEach(option => {
-                if (option.checked) {
-                    var newOption = new Option(option.text, option.value)
-                    searchEngine.appendChild(newOption)
-                }
-            })
+    // 从 storage 中获取这些值并添加相应的 option 元素
+    chrome.storage.sync.get(keys, function (result) {
+        keys.forEach(function (key) {
+            var isEnabled = result[key] // 获取键名对应的值
+            if (isEnabled) {
+                var option = document.createElement("option")
+                option.value = key
+                option.text = getEngineName(key) // 获取搜索引擎名称
+                document.getElementById("select").appendChild(option)
+            }
+        })
+    })
+
+    // 辅助函数：根据键名获取搜索引擎名称
+    function getEngineName(key) {
+        switch (key) {
+            case "google":
+                return "谷歌"
+            case "baidu":
+                return "百度"
+            case "zhihu":
+                return "知乎"
+            case "douban":
+                return "豆瓣"
+            case "bilibili":
+                return "B站"
+            case "taobao":
+                return "淘宝"
+            default:
+                return ""
         }
-    )
+    }
 })
 
 //设置回车等于点击按钮
@@ -57,6 +62,15 @@ searchButtonElement.onclick = function () {
     var searchInputResult = searchInputElement.value.trim()
 
     switch (searchSelectElement.value) {
+        case "google":
+            openSearchPage(
+                "https://www.google.com/search?q=",
+                searchInputResult
+            )
+            break
+        case "baidu":
+            openSearchPage("https://www.baidu.com/s?wd=", searchInputResult)
+            break
         case "zhihu":
             openSearchPage(
                 "https://www.zhihu.com/search?type=content&q=",
@@ -77,15 +91,6 @@ searchButtonElement.onclick = function () {
             break
         case "taobao":
             openSearchPage("https://s.taobao.com/search?q=", searchInputResult)
-            break
-        case "google":
-            openSearchPage(
-                "https://www.google.com/search?q=",
-                searchInputResult
-            )
-            break
-        case "baidu":
-            openSearchPage("https://www.baidu.com/s?wd=", searchInputResult)
             break
         default:
             console.log("empty!")
