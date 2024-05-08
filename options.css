@@ -1,12 +1,33 @@
 body {
+    font-family: Arial, sans-serif;
+    background-color: #dfdfdf;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     margin: 0;
-    text-align: center;
-    height: 100vh;
 }
 
-.container {
-    margin: 0 auto;
-    border: solid 5px black;
-    width: 50%;
-    height: 40%;
+h1 {
+    color: #0056b3;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    width: fit-content;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
 }
