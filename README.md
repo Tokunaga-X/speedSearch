@@ -29,4 +29,4 @@ This is a Chrome extension that has been designed with the aim of providing a fa
 -   [✔️] ~~美化 option 页面。~~
 -   [✔️] ~~增加其他搜索选项~~
 -   [✔️] ~~增加选项页面，使其能够使用户控制搜索选项~~
--   [❌] 发布该扩展
+-   [❌] ~~发布该扩展~~ （需要交 25 美金开通开发者帐号）
