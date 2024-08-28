@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Quick Search",
-    "version": "1.1",
-    "description": "Quick way to search on zhihu while using chrome.",
+    "version": "1.2",
+    "description": "Quick way to search on multiple platforms including Zhihu, Google, Baidu, and more while using Chrome.",
 
     "permissions": ["commands", "storage"],
 
@@ -31,7 +31,7 @@
     },
 
     "commands": {
-        "_execute_browser_action": {
+        "_execute_action": {
             "suggested_key": {
                 "default": "Ctrl+Shift+Z",
                 "mac": "Command+Shift+Z"
@@ -40,5 +40,6 @@
         }
     },
 
-    "homepage_url": "https://github.com/Tokunaga-24253/zhihuSearch-on-Chrome"
+    "homepage_url": "https://github.com/Tokunaga-24253/zhihuSearch-on-Chrome",
+    "author": "Tokunaga-24253"
 }

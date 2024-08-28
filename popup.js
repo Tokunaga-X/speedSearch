@@ -1,103 +1,88 @@
-"use strict"
+"use strict";
 
-var searchButtonElement = document.getElementById("btn")
-var searchSelectElement = document.getElementById("select")
-var searchInputElement = document.getElementById("input")
+// 搜索引擎配置
+const searchEngines = {
+  google: {
+    name: "谷歌",
+    url: "https://www.google.com/search?q=",
+  },
+  baidu: {
+    name: "百度",
+    url: "https://www.baidu.com/s?wd=",
+  },
+  zhihu: {
+    name: "知乎",
+    url: "https://www.zhihu.com/search?type=content&q=",
+  },
+  douban: {
+    name: "豆瓣",
+    url: "https://www.douban.com/search?source=suggest&q=",
+  },
+  bilibili: {
+    name: "B站",
+    url: "https://search.bilibili.com/all?keyword=",
+  },
+  taobao: {
+    name: "淘宝",
+    url: "https://s.taobao.com/search?q=",
+  },
+};
 
-//设置打开页面光标就聚焦在输入栏
+const searchButtonElement = document.getElementById("btn");
+const searchSelectElement = document.getElementById("select");
+const searchInputElement = document.getElementById("input");
+
 document.addEventListener("DOMContentLoaded", function () {
-    searchInputElement.focus()
+  searchInputElement.focus();
 
-    var keys = ["google", "baidu", "zhihu", "douban", "bilibili", "taobao"]
+  loadSearchEngines();
+});
 
-    // 从 storage 中获取这些值并添加相应的 option 元素
-    chrome.storage.sync.get(keys, function (result) {
-        keys.forEach(function (key) {
-            var isEnabled = result[key] // 获取键名对应的值
-            if (isEnabled) {
-                var option = document.createElement("option")
-                option.value = key
-                option.text = getEngineName(key) // 获取搜索引擎名称
-                document.getElementById("select").appendChild(option)
-            }
-        })
-    })
-
-    // 辅助函数：根据键名获取搜索引擎名称
-    function getEngineName(key) {
-        switch (key) {
-            case "google":
-                return "谷歌"
-            case "baidu":
-                return "百度"
-            case "zhihu":
-                return "知乎"
-            case "douban":
-                return "豆瓣"
-            case "bilibili":
-                return "B站"
-            case "taobao":
-                return "淘宝"
-            default:
-                return ""
+function loadSearchEngines() {
+  chrome.storage.sync
+    .get(Object.keys(searchEngines), function (result) {
+      Object.keys(searchEngines).forEach(function (key) {
+        if (result[key]) {
+          addSearchEngineOption(key, searchEngines[key].name);
         }
-    }
-})
-
-//设置回车等于点击按钮
-searchInputElement.addEventListener("keyup", function (event) {
-    event.preventDefault()
-    if (event.key === "Enter") {
-        searchButtonElement.click()
-    }
-})
-
-//搜索功能实现
-searchButtonElement.onclick = function () {
-    if (!searchInputElement.value) {
-        console.log("Search input is empty!")
-        return
-    }
-
-    var searchInputResult = searchInputElement.value.trim()
-
-    switch (searchSelectElement.value) {
-        case "google":
-            openSearchPage(
-                "https://www.google.com/search?q=",
-                searchInputResult
-            )
-            break
-        case "baidu":
-            openSearchPage("https://www.baidu.com/s?wd=", searchInputResult)
-            break
-        case "zhihu":
-            openSearchPage(
-                "https://www.zhihu.com/search?type=content&q=",
-                searchInputResult
-            )
-            break
-        case "douban":
-            openSearchPage(
-                "https://www.douban.com/search?source=suggest&q=",
-                searchInputResult
-            )
-            break
-        case "bilibili":
-            openSearchPage(
-                "https://search.bilibili.com/all?keyword=",
-                searchInputResult
-            )
-            break
-        case "taobao":
-            openSearchPage("https://s.taobao.com/search?q=", searchInputResult)
-            break
-        default:
-            console.log("empty!")
-    }
+      });
+    })
+    .catch(function (error) {
+      console.error("获取搜索引擎设置时出错：", error);
+      alert("加载搜索引擎选项时出错，请刷新页面重试。");
+    });
 }
 
+function addSearchEngineOption(value, text) {
+  const option = document.createElement("option");
+  option.value = value;
+  option.text = text;
+  searchSelectElement.appendChild(option);
+}
+
+searchInputElement.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    searchButtonElement.click();
+  }
+});
+
+searchButtonElement.onclick = function () {
+  const searchInput = searchInputElement.value.trim();
+  if (!searchInput) {
+    alert("请输入搜索内容！");
+    return;
+  }
+
+  const selectedEngine = searchSelectElement.value;
+  if (searchEngines[selectedEngine]) {
+    openSearchPage(searchEngines[selectedEngine].url, searchInput);
+  } else {
+    alert("请选择一个有效的搜索引擎！");
+  }
+};
+
 function openSearchPage(baseUrl, query) {
-    var searchURL = baseUrl + encodeURIComponent(query)
-    chrome.tabs.create({ url: searchURL })
+  const searchURL = baseUrl + encodeURIComponent(query);
+  chrome.tabs.create({ url: searchURL });
 }
