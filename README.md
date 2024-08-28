@@ -1,32 +1,59 @@
+# Quick Search Chrome Extension
+
+[中文版 README](README_CN.md)
+
 ## Introduction
 
-一个简单的**Chrome**扩展，用来快速在一些信息网站上搜索东西。
-
-This is a Chrome extension that has been designed with the aim of providing a fast and efficient way to search for information on a range of different websites
+A simple **Chrome** extension designed for fast and efficient searching across various information websites.
 
 ![image](./images/view.png)
 
-把搜索从【打开网站（2-10 秒）-等待加载（1-2 秒）鼠标点击搜索框（1 秒）-输入内容-点击搜索/回车（1 秒）-出搜索结果】缩减为【按下 ctrl+z-输入内容-回车-出搜索结果】，缩短了至少一半的时间。一次可能不多，但是如果你在互联网上获取内容很频繁，比如我，一天可能要在各个网站上搜索几十上百次，这个扩展的作用在我看来就不言而喻了。
+This extension dramatically streamlines the search process, reducing multiple steps to just a few keystrokes. It cuts search time by at least half, which is particularly beneficial for users who perform numerous searches daily across different platforms.
 
-目前支持谷歌、百度、知乎、豆瓣、B 站、淘宝搜索。
+### Key Features:
 
-## How to load it on your Chrome
+- Supports searches on Google, Baidu, Zhihu, Douban, Bilibili, and Taobao
+- Quick access via customizable keyboard shortcuts (default: Ctrl+Shift+Z)
+- Configurable search options through a user-friendly interface
 
-1. 进入 Chrome 扩展管理页面：chrome://extensions/
-2. 打开开发者模式  
+## Installation Guide
+
+To install this extension on your Chrome browser:
+
+1. Navigate to Chrome's extension management page: chrome://extensions/
+2. Enable "Developer mode" in the top right corner
    ![image](./images/chrome-extension-developer-mode.png)
-3. 点击*加载已解压的扩展程序*按钮
+3. Click the "Load unpacked" button
    ![image](./images/chrome-extension-load.png)
-4. 选择代码文件目录
-5. 完成，你可以点击扩展程序呼出，固定到快捷栏，或者编辑键位来快速呼出搜索栏
+4. Select the directory containing the extension code
+5. Installation complete! You can now access the extension via its icon, pin it to the toolbar, or use the default shortcut (Ctrl+Shift+Z)
 
-### Option-page usage
+## Customization
 
-你可以在 Option 页面里进行配置，选择你想要在扩展中可使用的搜索平台。
+### Options Page
 
-## Todo：
+The extension offers a customizable experience through its Options page:
 
--   [✔️] ~~美化 option 页面。~~
--   [✔️] ~~增加其他搜索选项~~
--   [✔️] ~~增加选项页面，使其能够使用户控制搜索选项~~
--   [❌] ~~发布该扩展~~ （需要交 25 美金开通开发者帐号）
+- Select which search platforms you want to enable
+- Configure default search settings
+- Customize the appearance and behavior of the search interface
+
+To access the Options page, right-click on the extension icon and select "Options".
+
+## Project Status
+
+### Completed
+
+- [✔️] Improved design of the options page
+- [✔️] Added more search options
+- [✔️] Implemented user-controllable search options
+
+### To-Do
+
+- [ ] Publish the extension (Requires $25 to activate a developer account)
+
+### Future Plans
+
+We're constantly working to improve the extension. Future updates may include support for additional search platforms, enhanced customization options, and performance optimizations.
+
+Your feedback and suggestions are always welcome!
