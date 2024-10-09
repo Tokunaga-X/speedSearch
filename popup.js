@@ -6,6 +6,10 @@ const searchEngines = {
     name: "谷歌",
     url: "https://www.google.com/search?q=",
   },
+  x: {
+    name: "X",
+    url: "https://x.com/search?q=",
+  },
   baidu: {
     name: "百度",
     url: "https://www.baidu.com/s?wd=",
@@ -28,13 +32,13 @@ const searchEngines = {
   },
 };
 
+// 使用常量存储常用的DOM元素引用
 const searchButtonElement = document.getElementById("btn");
 const searchSelectElement = document.getElementById("select");
 const searchInputElement = document.getElementById("input");
 
 document.addEventListener("DOMContentLoaded", function () {
   searchInputElement.focus();
-
   loadSearchEngines();
 });
 
