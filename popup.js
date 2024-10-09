@@ -7,7 +7,7 @@ const searchEngines = {
     url: "https://www.google.com/search?q=",
   },
   twitter: {
-    name: "Twitter",
+    name: "X/推特",
     url: "https://x.com/search?q=",
   },
   baidu: {
