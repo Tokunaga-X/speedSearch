@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Quick Search",
     "version": "1.2",
-    "description": "Quick way to search on multiple platforms including Zhihu, Google, Baidu, and more while using Chrome.",
+    "description": "Quick way to search on multiple platforms including Zhihu, Google, Twitter, Baidu, and more while using Chrome.",
 
     "permissions": ["commands", "storage"],
 

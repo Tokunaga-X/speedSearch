@@ -6,8 +6,8 @@ const searchEngines = {
     name: "谷歌",
     url: "https://www.google.com/search?q=",
   },
-  x: {
-    name: "X",
+  twitter: {
+    name: "Twitter",
     url: "https://x.com/search?q=",
   },
   baidu: {
