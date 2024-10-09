@@ -12,7 +12,7 @@ This extension dramatically streamlines the search process, reducing multiple st
 
 ### Key Features:
 
-- Supports searches on Google, Baidu, Zhihu, Douban, Bilibili, and Taobao
+- Supports searches on Google, Baidu, (X)Twitter, Zhihu, Douban, Bilibili, and Taobao
 - Quick access via customizable keyboard shortcuts (default: Ctrl+Shift+Z)
 - Configurable search options through a user-friendly interface
 
